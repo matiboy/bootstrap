@@ -1,4 +1,9 @@
+<script type="text/ng-template" id="customTemplate.html">
+  <a><img ng-src="{{match.model.flag}}" width="16"> {{match.model.name}}</a>
+</script>
 <div class='container-fluid' ng-controller="TypeaheadCtrl">
     <pre>Model: {{selected| json}}</pre>
     <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8">
+    <pre>Model: {{customSelected| json}}</pre>
+    <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in iconedStates | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html">
 </div>
